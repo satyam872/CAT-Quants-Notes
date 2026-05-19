@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAT Quant: Ultimate Syllabus Master Deck</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- MathJax Configuration and Script -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .math-font {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .perspective {
+      perspective: 1500px;
+    }
+    .preserve-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    /* Custom scrollbar for desktop */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4f46e5;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header Navbar -->
+  <header class="border-b border-slate-800 bg-slate-950/85 backdrop-blur-md sticky top-0 z-50 px-4 md:px-8 py-4">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="h-11 w-11 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+          <i class="fa-solid fa-brain text-white text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-300 via-purple-400 to-pink-300 bg-clip-text text-transparent">CAT Quant Syllabus Master Deck</h1>
+          <p class="text-xs text-slate-400 font-semibold tracking-wider uppercase">Active Recall Formula Engine</p>
+        </div>
+      </div>
+      
+      <!-- Progress Analytics Tracker -->
+      <div class="flex items-center gap-4 w-full sm:w-auto">
+        <div class="flex flex-col w-full sm:w-48">
+          <div class="flex justify-between text-xs font-semibold mb-1 text-slate-300">
+            <span>Syllabus Mastered</span>
+            <span id="progressBarPercent">0%</span>
+          </div>
+          <div class="bg-slate-800 h-2.5 rounded-full overflow-hidden w-full border border-slate-700/50">
+            <div id="progressBar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="text-sm font-bold text-slate-200 bg-slate-900 px-3 py-2 rounded-xl border border-slate-800 whitespace-nowrap">
+          <span id="learnedCount" class="text-indigo-400">0</span> / <span id="totalCount" class="text-slate-400">50</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Workspace -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 md:px-8 py-6 flex flex-col lg:flex-row gap-8 items-stretch">
+    
+    <!-- Left Hand: Interactive Search, Categories, Stats and Help Panel -->
+    <section class="lg:w-1/4 flex flex-col gap-6">
+      
+      <!-- Search Input -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 flex flex-col gap-3 backdrop-blur-sm">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+          <i class="fa-solid fa-magnifying-glass text-indigo-400"></i> Search Formulas
+        </h3>
+        <div class="relative">
+          <input type="text" id="searchInput" oninput="handleSearch()" placeholder="e.g. Remainders, Circular Tracks..." class="w-full bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-2.5 text-sm text-slate-200 placeholder:text-slate-500 outline-none transition-all">
+          <button id="clearSearchBtn" onclick="clearSearch()" class="absolute right-3 top-3 text-slate-500 hover:text-slate-300 hidden">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chapters Syllabus Nav Filter -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 flex flex-col gap-3 backdrop-blur-sm">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center justify-between">
+          <span>Syllabus Modules</span>
+          <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-400 font-mono">5 Chapters</span>
+        </h3>
+        <div class="flex flex-col gap-1.5">
+          <button onclick="filterCategory('all')" id="btn-cat-all" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-xs font-semibold transition-all bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-lg shadow-indigo-600/10">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-cubes"></i> All Syllabus</span>
+            <span class="bg-indigo-900/80 text-[10px] font-mono px-2 py-0.5 rounded-full" id="count-all">50</span>
+          </button>
+          <button onclick="filterCategory('arithmetic')" id="btn-cat-arithmetic" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-xs font-semibold text-slate-400 hover:bg-slate-800/50 hover:text-slate-200 transition-all">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-percent text-blue-400"></i> Arithmetic</span>
+            <span class="bg-slate-800/80 text-[10px] font-mono px-2 py-0.5 rounded-full" id="count-arithmetic">10</span>
+          </button>
+          <button onclick="filterCategory('algebra')" id="btn-cat-algebra" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-xs font-semibold text-slate-400 hover:bg-slate-800/50 hover:text-slate-200 transition-all">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-square-root-variable text-emerald-400"></i> Algebra</span>
+            <span class="bg-slate-800/80 text-[10px] font-mono px-2 py-0.5 rounded-full" id="count-algebra">10</span>
+          </button>
+          <button onclick="filterCategory('numbers')" id="btn-cat-numbers" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-xs font-semibold text-slate-400 hover:bg-slate-800/50 hover:text-slate-200 transition-all">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-arrow-up-1-9 text-amber-400"></i> Number Systems</span>
+            <span class="bg-slate-800/80 text-[10px] font-mono px-2 py-0.5 rounded-full" id="count-numbers">10</span>
+          </button>
+          <button onclick="filterCategory('geometry')" id="btn-cat-geometry" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-xs font-semibold text-slate-400 hover:bg-slate-800/50 hover:text-slate-200 transition-all">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-draw-polygon text-purple-400"></i> Geometry & Mens.</span>
+            <span class="bg-slate-800/80 text-[10px] font-mono px-2 py-0.5 rounded-full" id="count-geometry">10</span>
+          </button>
+          <button onclick="filterCategory('modern')" id="btn-cat-modern" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-xs font-semibold text-slate-400 hover:bg-slate-800/50 hover:text-slate-200 transition-all">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-chart-pie text-pink-400"></i> Modern Math</span>
+            <span class="bg-slate-800/80 text-[10px] font-mono px-2 py-0.5 rounded-full" id="count-modern">10</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Flags Filter Panel -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 flex flex-col gap-3 backdrop-blur-sm">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+          <i class="fa-solid fa-filter text-indigo-400"></i> State Flags
+        </h3>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="toggleStarredOnly()" id="starFilterBtn" class="flex items-center justify-center gap-2 px-3 py-2 border border-slate-800 hover:border-slate-700 bg-slate-950/40 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all">
+            <i class="fa-solid fa-star text-amber-500"></i> Starred
+          </button>
+          <button onclick="toggleUnlearnedOnly()" id="unlearnedFilterBtn" class="flex items-center justify-center gap-2 px-3 py-2 border border-slate-800 hover:border-slate-700 bg-slate-950/40 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all">
+            <i class="fa-solid fa-circle-question text-indigo-400"></i> Review
+          </button>
+        </div>
+        <button onclick="resetAllState()" class="w-full py-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-rose-400 hover:text-rose-300 rounded-xl text-xs font-bold transition-all">
+          <i class="fa-solid fa-trash-arrow-up mr-1.5"></i> Clear Learn Progress
+        </button>
+      </div>
+    </section>
+
+    <!-- Center Sandbox: Interactive 3D Flashcard Module -->
+    <section class="flex-grow lg:w-3/4 flex flex-col justify-between gap-6 min-h-[500px]">
+      
+      <!-- Current Active Flashcard Header info -->
+      <div class="flex items-center justify-between px-2">
+        <div class="flex items-center gap-2">
+          <span class="text-xs bg-slate-900 border border-slate-800 px-3 py-1 rounded-full font-bold uppercase text-slate-200 tracking-wider flex items-center gap-1.5" id="cardCategory">
+            <!-- Icon and Category filled dynamically -->
+          </span>
+          <span class="text-xs text-slate-400 font-mono font-medium" id="cardIndexTracker">Card 1 of 50</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <button onclick="toggleStar()" class="text-lg text-slate-500 hover:text-amber-400 transition-colors p-2.5 focus:outline-none" id="starIcon" title="Toggle Starred State">
+            <i class="fa-regular fa-star"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3D Flashcard Sandbox -->
+      <div id="flashcardBox" onclick="flipCard()" class="perspective w-full h-[320px] md:h-[400px] cursor-pointer relative select-none">
+        <div id="innerCard" class="preserve-3d w-full h-full duration-500 absolute top-0 left-0 transition-transform">
+          
+          <!-- Front Face (Formula Concept Prompt) -->
+          <div class="backface-hidden absolute inset-0 w-full h-full rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-6 md:p-10 flex flex-col justify-between shadow-2xl hover:border-slate-700 transition-all">
+            <div class="flex items-center justify-between text-xs font-bold tracking-wider text-indigo-400 uppercase">
+              <span>Formula Concept Prompt</span>
+              <span class="bg-indigo-950/60 border border-indigo-900/30 text-indigo-300 px-3 py-1 rounded-full flex items-center gap-1.5 font-sans">
+                <i class="fa-solid fa-hourglass-start animate-pulse"></i> Formula Recall
+              </span>
+            </div>
+            
+            <div class="flex-grow flex flex-col items-center justify-center text-center py-4">
+              <h2 id="cardFrontText" class="text-lg md:text-2xl font-bold leading-relaxed max-w-3xl text-slate-100 tex2jax_process">
+                Standard form of quadratic equations?
+              </h2>
+            </div>
+            
+            <div class="text-center text-xs font-semibold text-slate-500 flex items-center justify-center gap-2">
+              <i class="fa-solid fa-hand-pointer mr-1.5 animate-bounce"></i> Click or Tap to reveal formula derivation
+            </div>
+          </div>
+          
+          <!-- Back Face (Detailed Solution & Constraints) -->
+          <div class="backface-hidden rotate-y-180 w-full h-full rounded-3xl border border-indigo-500/40 bg-slate-950 p-6 md:p-10 flex flex-col justify-between shadow-2xl shadow-indigo-950/20">
+            <div class="flex items-center justify-between text-xs font-bold tracking-wider text-emerald-400 uppercase">
+              <span>Mathematical Formula & Limits</span>
+              <span class="bg-emerald-950/60 border border-emerald-900/30 text-emerald-300 px-3 py-1 rounded-full flex items-center gap-1.5 font-sans">
+                <i class="fa-solid fa-circle-check"></i> Standard Derivation
+              </span>
+            </div>
+            
+            <div class="flex-grow flex items-center justify-center text-center py-4 overflow-y-auto max-h-[220px] md:max-h-[280px]">
+              <div id="cardBackText" class="text-sm md:text-lg font-medium leading-relaxed max-w-3xl text-indigo-100 tex2jax_process w-full">
+                $ax^2 + bx + c = 0$
+              </div>
+            </div>
+            
+            <div class="text-center text-xs font-semibold text-slate-500">
+              <i class="fa-solid fa-rotate-left mr-1.5"></i> Click anywhere to flip back to the question
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Navigation & Action Engine Control Bar -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 mt-2 px-1">
+        
+        <!-- Completion Checkers -->
+        <div class="flex items-center gap-3 w-full md:w-auto justify-center">
+          <button onclick="markCardLearned(false)" id="btnNeedPractice" class="flex-grow md:flex-grow-0 px-6 py-3.5 border border-rose-500/30 hover:border-rose-500 bg-rose-950/20 hover:bg-rose-950/40 text-rose-300 rounded-2xl text-xs font-extrabold tracking-wider uppercase transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-triangle-exclamation"></i> Needs Practice
+          </button>
+          <button onclick="markCardLearned(true)" id="btnLearned" class="flex-grow md:flex-grow-0 px-6 py-3.5 border border-emerald-500/30 hover:border-emerald-500 bg-emerald-950/20 hover:bg-emerald-950/40 text-emerald-300 rounded-2xl text-xs font-extrabold tracking-wider uppercase transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-circle-check"></i> Got It!
+          </button>
+        </div>
+
+        <!-- Navigation triggers -->
+        <div class="flex items-center gap-3 w-full md:w-auto justify-center">
+          <button onclick="prevCard()" class="w-12 h-12 border border-slate-850 bg-slate-900/60 hover:bg-slate-800 text-slate-200 rounded-2xl flex items-center justify-center transition-all shadow-md active:scale-95" title="Previous Card">
+            <i class="fa-solid fa-arrow-left-long text-base"></i>
+          </button>
+          <button onclick="shuffleDeck()" class="px-5 h-12 border border-slate-850 bg-slate-900/60 hover:bg-slate-800 text-slate-200 rounded-2xl flex items-center justify-center gap-2 transition-all font-bold text-xs uppercase tracking-wider shadow-md" title="Shuffle Current Filtered Cards">
+            <i class="fa-solid fa-shuffle text-indigo-400"></i> Shuffle
+          </button>
+          <button onclick="nextCard()" class="w-12 h-12 border border-slate-850 bg-slate-900/60 hover:bg-slate-800 text-slate-200 rounded-2xl flex items-center justify-center transition-all shadow-md active:scale-95" title="Next Card">
+            <i class="fa-solid fa-arrow-right-long text-base"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Complete Syllabus Catalog Directory -->
+  <section class="max-w-7xl w-full mx-auto px-4 md:px-8 pb-16 mt-6">
+    <div class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-5 md:p-8 backdrop-blur-sm">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-lg font-extrabold tracking-tight text-slate-100 flex items-center gap-2">
+            <i class="fa-solid fa-folder-open text-indigo-400"></i> Comprehensive Syllabus Catalog
+          </h2>
+          <p class="text-xs text-slate-400 mt-1">Direct indexed directory of all 50 CAT Quantitative Aptitude syllabus reference points.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-slate-500 font-medium">Click on any module topic to trigger that card immediately.</span>
+        </div>
+      </div>
+      
+      <!-- Catalog Grid / List -->
+      <div class="overflow-x-auto rounded-2xl border border-slate-850 bg-slate-950/60">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-slate-850 bg-slate-900/30 text-slate-400 font-bold uppercase tracking-wider text-[10px]">
+              <th class="py-4 px-5">#</th>
+              <th class="py-4 px-4">Chapter</th>
+              <th class="py-4 px-5">Quantitative Concept Formula</th>
+              <th class="py-4 px-5 text-right">Mastery Log</th>
+            </tr>
+          </thead>
+          <tbody id="catalogTableBody">
+            <!-- Dynamically Rendered Rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Navigation -->
+  <footer class="border-t border-slate-900 py-6 text-center text-xs text-slate-500 bg-slate-950/80 mt-auto">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; By Satyam Kumar.</p>
+      <div class="flex items-center gap-5">
+        <span class="hover:text-slate-300 cursor-pointer transition-colors font-medium">Algebra Guide</span>
+        <span class="hover:text-slate-300 cursor-pointer transition-colors font-medium">Number Systems</span>
+        <span class="hover:text-slate-300 cursor-pointer transition-colors font-medium">Modern Math Blueprint</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Complete 50-Card High-Fidelity CAT Quant Syllabus Database
+    const cardsDataset = [
+      // --- ARITHMETIC ---
+      {
+        id: 1,
+        category: "arithmetic",
+        categoryLabel: "Arithmetic",
+        icon: "fa-solid fa-percent text-blue-400",
+        front: "TSD: Circular Tracks - Formula for Time taken for meeting for the first time ever",
+        back: "For two runners running on a circular track of length $L$ with speeds $u$ and $v$:\n<br><br>$$\\text{Time} = \\frac{L}{u + v} \\quad \\text{(if running in opposite directions)}$$\n$$\\text{Time} = \\frac{L}{|u - v|} \\quad \\text{(if running in the same direction)}$$"
+      },
+      {
+        id: 2,
+        category: "arithmetic",
+        categoryLabel: "Arithmetic",
+        icon: "fa-solid fa-percent text-blue-400",
+        front: "TSD: Circular Tracks - Number of distinct meeting points on a circle",
+        back: "If two runners run with speeds in ratio $a : b$ (reduced to lowest terms):\n<br><br>$$\\text{Distinct meeting points} = a + b \\quad \\text{(opposite direction)}$$\n$$\\text{Distinct meeting points} = |a - b| \\quad \\text{(same direction)}$$"
+      },
+      {
+        id: 3,
+        category: "arithmetic",
+        categoryLabel: "Arithmetic",
+        icon: "fa-solid fa-percent text-blue-400",
+        front: "TSD: Escalators core equation parameters",
+        back: "Let $T$ be total steps, $e$ be speed of escalator (steps/sec), and $p$ be speed of person (steps/sec):\n<br><br>$$\\text{Total Steps (T)} = t \\times (p \\pm e)$$\n<br>Use $+$ if moving in the direction of the escalator; use $-$ if moving against it."
+      },
+      {
+        id: 4,
+        category: "arithmetic",
+        categoryLabel: "Arithmetic",
+        icon: "fa-solid fa-percent text-blue-400",
+        front: "TSD: Relative Speed on Average Speeds with equal distance intervals",
+        back: "If a journey covers equal distances at speeds $v_1$ and $v_2$, the harmonic mean represents the overall average speed:\n<br><br>$$\\text{Average Speed} = \\frac{2 v_1 v_2}{v_1 + v_2}$$"
+      },
+      {
+        id: 5,
+        category: "arithmetic",
+        categoryLabel: "Arithmetic",
+        icon: "fa-solid fa-percent text-blue-400",
+        front: "Work and Time: Constant Product Rule for Men-Days-Hours relationship",
+        back: "The general relationship between group work parameters is:\n<br><br>$$\\frac{M_1 D_1 H_1}{W_1} = \\frac{M_2 D_2 H_2}{W_2}$$\n<br>Where $M$ is workers, $D$ is days, $H$ is hours, and $W$ is the actual work completed."
+      },
+      {
+        id: 6,
+        category: "arithmetic",
+        categoryLabel: "Arithmetic",
+        icon: "fa-solid fa-percent text-blue-400",
+        front: "Mixtures: Successive Dilution / Replacements Formula",
+        back: "If $y$ liters are repeatedly removed from $x$ liters of pure liquid and replaced with water, the final concentration after $n$ cycles is:\n<br><br>$$\\text{Final Quantity of Original Liquid} = x \\left(1 - \\frac{y}{x}\\right)^n$$"
+      },
+      {
+        id: 7,
+        category: "arithmetic",
+        categoryLabel: "Arithmetic",
+        icon: "fa-solid fa-percent text-blue-400",
+        front: "Mixtures: The Alligation Cross Rule representation",
+        back: "To find ratio $q_1 : q_2$ of mixing ingredients with values $c$ (cheap) and $d$ (dear) to get mean value $m$:\n<br><br>$$\\frac{q_1}{q_2} = \\frac{d - m}{m - c}$$\n<br>Where $c < m < d$."
+      },
+      {
+        id: 8,
+        category: "arithmetic",
+        categoryLabel: "Arithmetic",
+        icon: "fa-solid fa-percent text-blue-400",
+        front: "Interest: Difference between Compound and Simple Interest for 2 Years",
+        back: "The difference $D$ for principal $P$ and interest rate $r\\%$ is given by:\n<br><br>$$D_2 = P \\left(\\frac{r}{100}\\right)^2$$"
+      },
+      {
+        id: 9,
+        category: "arithmetic",
+        categoryLabel: "Arithmetic",
+        icon: "fa-solid fa-percent text-blue-400",
+        front: "Interest: Difference between Compound and Simple Interest for 3 Years",
+        back: "The difference $D_3$ for principal $P$ and interest rate $r\\%$ is given by:\n<br><br>$$D_3 = P \\left(\\frac{r}{100}\\right)^2 \\left(3 + \\frac{r}{100}\\right)$$"
+      },
+      {
+        id: 10,
+        category: "arithmetic",
+        categoryLabel: "Arithmetic",
+        icon: "fa-solid fa-percent text-blue-400",
+        front: "Percentages: Multiplying Factors for Compound Annual Growth Rate (CAGR)",
+        back: "If a value grows by $r\\%$ annually, the final value $A$ after $t$ years is:\n<br><br>$$A = P (1 + g)^t \\quad \\text{where } g = \\frac{r}{100}$$\n<br>This matches the compound interest formula and helps in rapid calculation."
+      },
+
+      // --- ALGEBRA ---
+      {
+        id: 11,
+        category: "algebra",
+        categoryLabel: "Algebra",
+        icon: "fa-solid fa-square-root-variable text-emerald-400",
+        front: "Logarithm: General formula of change of base identity",
+        back: "For any positive real numbers $a, b, c$ ($a, c \\neq 1$):\n<br><br>$$\\log_a b = \\frac{\\log_c b}{\\log_c a} = \\frac{1}{\\log_b a}$$"
+      },
+      {
+        id: 12,
+        category: "algebra",
+        categoryLabel: "Algebra",
+        icon: "fa-solid fa-square-root-variable text-emerald-400",
+        front: "Logarithm: Base Exponent and Power combination rules",
+        back: "For argument exponent $k$ and base exponent $n$:\n<br><br>$$\\log_{a^n} (x^k) = \\frac{k}{n} \\log_a x$$"
+      },
+      {
+        id: 13,
+        category: "algebra",
+        categoryLabel: "Algebra",
+        icon: "fa-solid fa-square-root-variable text-emerald-400",
+        front: "Quadratic Equations: Absolute Difference of Roots ($|\\alpha - \\beta|$)",
+        back: "The absolute difference of roots for $ax^2 + bx + c = 0$ is:\n<br><br>$$|\\alpha - \\beta| = \\frac{\\sqrt{D}}{|a|} = \\sqrt{(\\alpha + \\beta)^2 - 4\\alpha\\beta}$$"
+      },
+      {
+        id: 14,
+        category: "algebra",
+        categoryLabel: "Algebra",
+        icon: "fa-solid fa-square-root-variable text-emerald-400",
+        front: "Quadratic Equations: Condition for exact Location of Roots - Value between roots",
+        back: "For real number $k$ to lie strictly between roots $\\alpha$ and $\\beta$ of $f(x) = ax^2 + bx + c$:\n<br><br>$$a \\cdot f(k) < 0$$\n<br>This single condition guarantees $D > 0$ automatically."
+      },
+      {
+        id: 15,
+        category: "algebra",
+        categoryLabel: "Algebra",
+        icon: "fa-solid fa-square-root-variable text-emerald-400",
+        front: "Quadratic Equations: Newton's Sum Identity ($S_n = \\alpha^n + \\beta^n$)",
+        back: "For roots of $ax^2 + bx + c = 0$, the high-power sum $S_n$ satisfies the recurrence:\n<br><br>$$a S_n + b S_{n-1} + c S_{n-2} = 0$$\n<br>This reduces computation time significantly in advanced algebra."
+      },
+      {
+        id: 16,
+        category: "algebra",
+        categoryLabel: "Algebra",
+        icon: "fa-solid fa-square-root-variable text-emerald-400",
+        front: "Sequences & Series: Sum of an Infinite Geometric Progression (GP)",
+        back: "For an infinite GP with first term $a$ and common ratio $r$ (where $|r| < 1$):\n<br><br>$$S_{\\infty} = \\frac{a}{1 - r}$$"
+      },
+      {
+        id: 17,
+        category: "algebra",
+        categoryLabel: "Algebra",
+        icon: "fa-solid fa-square-root-variable text-emerald-400",
+        front: "Sequences & Series: Sum of the first $n$ natural squares and cubes",
+        back: "The algebraic sum formulas are:\n<br><br>$$\\sum n^2 = \\frac{n(n+1)(2n+1)}{6}$$\n$$\\sum n^3 = \\left(\\frac{n(n+1)}{2}\\right)^2 = (\\sum n)^2$$"
+      },
+      {
+        id: 18,
+        category: "algebra",
+        categoryLabel: "Algebra",
+        icon: "fa-solid fa-square-root-variable text-emerald-400",
+        front: "Inequalities: AM-GM-HM inequality relation",
+        back: "For positive real numbers, the relationship between means is:\n<br><br>$$\\text{AM} \\ge \\text{GM} \\ge \\text{HM}$$\n<br>Equality holds if and only if all terms are identical."
+      },
+      {
+        id: 19,
+        category: "algebra",
+        categoryLabel: "Algebra",
+        icon: "fa-solid fa-square-root-variable text-emerald-400",
+        front: "Functions & Graphs: Symmetrical and Periodic properties of Even/Odd Functions",
+        back: "An Even function satisfies $f(-x) = f(x)$ and is symmetric about the y-axis.\n<br>An Odd function satisfies $f(-x) = -f(x)$ and is symmetric about the origin."
+      },
+      {
+        id: 20,
+        category: "algebra",
+        categoryLabel: "Algebra",
+        icon: "fa-solid fa-square-root-variable text-emerald-400",
+        front: "Polynomials: Remainder Theorem and Factor Theorem",
+        back: "If a polynomial $P(x)$ is divided by $(x - a)$, the remainder is $P(a)$.\n<br>If $P(a) = 0$, then $(x-a)$ is a factor of $P(x)$."
+      },
+
+      // --- NUMBER SYSTEMS ---
+      {
+        id: 21,
+        category: "numbers",
+        categoryLabel: "Number Systems",
+        icon: "fa-solid fa-arrow-up-1-9 text-amber-400",
+        front: "Factors: Total Number of Factors of a Composite Number $N$",
+        back: "If $N$ is prime factorized as $p^a \\cdot q^b \\cdot r^c \\dots$:\n<br><br>$$\\text{Total Factors} = (a+1)(b+1)(c+1)\\dots$$"
+      },
+      {
+        id: 22,
+        category: "numbers",
+        categoryLabel: "Number Systems",
+        icon: "fa-solid fa-arrow-up-1-9 text-amber-400",
+        front: "Factors: Sum of all Factors of a Composite Number $N$",
+        back: "If $N = p^a \\cdot q^b \\cdot r^c \\dots$, the sum of its factors is:\n<br><br>$$\\text{Sum} = \\left(\\frac{p^{a+1}-1}{p-1}\\right) \\left(\\frac{q^{b+1}-1}{q-1}\\right) \\left(\\frac{r^{c+1}-1}{r-1}\\right)\\dots$$"
+      },
+      {
+        id: 23,
+        category: "numbers",
+        categoryLabel: "Number Systems",
+        icon: "fa-solid fa-arrow-up-1-9 text-amber-400",
+        front: "Euler's Totient Function: Calculation formula of $\\phi(N)$",
+        back: "The number of integers less than $N$ that are coprime to $N$ is:\n<br><br>$$\\phi(N) = N \\left(1 - \\frac{1}{p}\\right)\\left(1 - \\frac{1}{q}\\right)\\left(1 - \\frac{1}{r}\\right)\\dots$$\n<br>Where $p, q, r$ are the distinct prime factors of $N$."
+      },
+      {
+        id: 24,
+        category: "numbers",
+        categoryLabel: "Number Systems",
+        icon: "fa-solid fa-arrow-up-1-9 text-amber-400",
+        front: "Euler's Theorem for Remainders",
+        back: "If $a$ and $N$ are coprime ($GCD(a, N) = 1$):\n<br><br>$$a^{\\phi(N)} \\equiv 1 \\pmod N$$\n<br>This is a powerful general form of Fermat's Little Theorem."
+      },
+      {
+        id: 25,
+        category: "numbers",
+        categoryLabel: "Number Systems",
+        icon: "fa-solid fa-arrow-up-1-9 text-amber-400",
+        front: "Fermat's Little Theorem for Prime Moduli Remainders",
+        back: "If $p$ is a prime number and $a$ is not divisible by $p$:\n<br><br>$$a^{p-1} \\equiv 1 \\pmod p \\quad \\text{and} \\quad a^p \\equiv a \\pmod p$$"
+      },
+      {
+        id: 26,
+        category: "numbers",
+        categoryLabel: "Number Systems",
+        icon: "fa-solid fa-arrow-up-1-9 text-amber-400",
+        front: "Wilson's Theorem for Factorial Remainders",
+        back: "For any prime number $p$:\n<br><br>$$(p - 1)! \\equiv -1 \\pmod p \\quad \\text{or} \\quad (p - 1)! + 1 \\text{ is divisible by } p$$"
+      },
+      {
+        id: 27,
+        category: "numbers",
+        categoryLabel: "Number Systems",
+        icon: "fa-solid fa-arrow-up-1-9 text-amber-400",
+        front: "Legendre's Formula: Highest Power of a Prime $p$ in $n!$",
+        back: "The exponent of prime $p$ in the prime factorization of $n!$ is:\n<br><br>$$E_p(n!) = \\sum_{k=1}^{\\infty} \\left\\lfloor \\frac{n}{p^k} \\right\\rfloor = \\left\\lfloor \\frac{n}{p} \\right\\rfloor + \\left\\lfloor \\frac{n}{p^2} \\right\\rfloor + \\left\\lfloor \\frac{n}{p^3} \\right\\rfloor + \\dots$$"
+      },
+      {
+        id: 28,
+        category: "numbers",
+        categoryLabel: "Number Systems",
+        icon: "fa-solid fa-arrow-up-1-9 text-amber-400",
+        front: "Product of HCF and LCM relationship",
+        back: "For two positive integers $A$ and $B$:\n<br><br>$$\\text{HCF}(A, B) \\times \\text{LCM}(A, B) = A \\times B$$\n<br>Note: This product property does not extend to three or more numbers."
+      },
+      {
+        id: 29,
+        category: "numbers",
+        categoryLabel: "Number Systems",
+        icon: "fa-solid fa-arrow-up-1-9 text-amber-400",
+        front: "HCF and LCM of Fractions",
+        back: "To calculate HCF and LCM of fractional values:\n<br><br>$$\\text{HCF of Fractions} = \\frac{\\text{HCF of Numerators}}{\\text{LCM of Denominators}}$$\n$$\\text{LCM of Fractions} = \\frac{\\text{LCM of Numerators}}{\\text{HCF of Denominators}}$$"
+      },
+      {
+        id: 30,
+        category: "numbers",
+        categoryLabel: "Number Systems",
+        icon: "fa-solid fa-arrow-up-1-9 text-amber-400",
+        front: "Condition for number of trailing zeroes in $n!$",
+        back: "The number of trailing zeroes is determined by the exponent of $5$ in $n!$, as $5$ is less frequent than $2$:\n<br><br>$$\\text{Trailing Zeroes} = \\left\\lfloor \\frac{n}{5} \\right\\rfloor + \\left\\lfloor \\frac{n}{25} \\right\\rfloor + \\left\\lfloor \\frac{n}{125} \\right\\rfloor + \\dots$$"
+      },
+
+      // --- GEOMETRY ---
+      {
+        id: 31,
+        category: "geometry",
+        categoryLabel: "Geometry",
+        icon: "fa-solid fa-draw-polygon text-purple-400",
+        front: "Triangles: Apollonius Theorem (relationship with Medians)",
+        back: "For triangle $ABC$ with median $AD$ drawn to side $BC$:\n<br><br>$$AB^2 + AC^2 = 2\\left(AD^2 + BD^2\\right) = 2\\left(AD^2 + \\left(\\frac{BC}{2}\\right)^2\\right)$$"
+      },
+      {
+        id: 32,
+        category: "geometry",
+        categoryLabel: "Geometry",
+        icon: "fa-solid fa-draw-polygon text-purple-400",
+        front: "Triangles: Inradius ($r$) and Circumradius ($R$) of any triangle",
+        back: "Let $\\Delta$ be area, $s$ be semi-perimeter, and $a, b, c$ be sides:\n<br><br>$$\\text{Inradius } r = \\frac{\\Delta}{s}$$\n$$\\text{Circumradius } R = \\frac{a b c}{4 \\Delta}$$"
+      },
+      {
+        id: 33,
+        category: "geometry",
+        categoryLabel: "Geometry",
+        icon: "fa-solid fa-draw-polygon text-purple-400",
+        front: "Triangles: Inradius and Circumradius specifically of an Equilateral Triangle",
+        back: "For side length $a$:\n<br><br>$$\\text{Inradius } r = \\frac{a}{2\\sqrt{3}}$$\n$$\\text{Circumradius } R = \\frac{a}{\\sqrt{3}}$$\n<br>Note that $R = 2r$."
+      },
+      {
+        id: 34,
+        category: "geometry",
+        categoryLabel: "Geometry",
+        icon: "fa-solid fa-draw-polygon text-purple-400",
+        front: "Circles: Chord properties and Intersecting Chords Theorem",
+        back: "If two chords $AB$ and $CD$ intersect inside or outside the circle at point $P$:\n<br><br>$$PA \\times PB = PC \\times PD$$"
+      },
+      {
+        id: 35,
+        category: "geometry",
+        categoryLabel: "Geometry",
+        icon: "fa-solid fa-draw-polygon text-purple-400",
+        front: "Circles: Tangent Secant Theorem",
+        back: "If a tangent $PT$ and a secant $PAB$ (cutting at $A$ and $B$) are drawn from external point $P$:\n<br><br>$$PT^2 = PA \\times PB$$"
+      },
+      {
+        id: 36,
+        category: "geometry",
+        categoryLabel: "Geometry",
+        icon: "fa-solid fa-draw-polygon text-purple-400",
+        front: "Cyclic Quadrilateral: Ptolemy's Theorem",
+        back: "In a cyclic quadrilateral $ABCD$ with diagonals $AC$ and $BD$:\n<br><br>$$AC \\times BD = (AB \\times CD) + (BC \\times AD)$$\n<br>The product of diagonals equals the sum of the products of opposite sides."
+      },
+      {
+        id: 37,
+        category: "geometry",
+        categoryLabel: "Geometry",
+        icon: "fa-solid fa-draw-polygon text-purple-400",
+        front: "Cyclic Quadrilateral: Area by Brahmagupta's Formula",
+        back: "With sides $a, b, c, d$ and semi-perimeter $s = \\frac{a+b+c+d}{2}$:\n<br><br>$$\\text{Area} = \\sqrt{(s-a)(s-b)(s-c)(s-d)}$$"
+      },
+      {
+        id: 38,
+        category: "geometry",
+        categoryLabel: "Geometry",
+        icon: "fa-solid fa-draw-polygon text-purple-400",
+        front: "Regular Polygons: Sum of Interior Angles and Number of Diagonals",
+        back: "For any $n$-sided convex polygon:\n<br><br>$$\\text{Sum of Interior Angles} = (n - 2) \\times 180^{\\circ}$$\n$$\\text{Number of Diagonals} = \\frac{n(n - 3)}{2}$$\n$$\\text{Sum of Exterior Angles} = 360^{\\circ}$$\n"
+      },
+      {
+        id: 39,
+        category: "geometry",
+        categoryLabel: "Geometry",
+        icon: "fa-solid fa-draw-polygon text-purple-400",
+        front: "Coordinate Geometry: Distance from a point $(x_1, y_1)$ to a line $Ax + By + C = 0$",
+        back: "The shortest perpendicular distance $d$ is given by:\n<br><br>$$d = \\frac{|A x_1 + B y_1 + C|}{\\sqrt{A^2 + B^2}}$$"
+      },
+      {
+        id: 40,
+        category: "geometry",
+        categoryLabel: "Geometry",
+        icon: "fa-solid fa-draw-polygon text-purple-400",
+        front: "Mensuration: Volume and Total Surface Area of regular Cone & Sphere",
+        back: "The core dimensional formulas are:\n<br><br>$$\\text{Cone Volume} = \\frac{1}{3}\\pi r^2 h \\quad | \\quad \\text{Cone Total Surface Area} = \\pi r(r + \\sqrt{r^2+h^2})$$\n$$\\text{Sphere Volume} = \\frac{4}{3}\\pi r^3 \\quad | \\quad \\text{Sphere Surface Area} = 4\\pi r^2$$"
+      },
+
+      // --- MODERN MATHS ---
+      {
+        id: 41,
+        category: "modern",
+        categoryLabel: "Modern Math",
+        icon: "fa-solid fa-chart-pie text-pink-400",
+        front: "P&C: Number of Derangements (complete mismatch problem)",
+        back: "The number of ways $D_n$ to arrange $n$ items such that no item goes into its correct position is:\n<br><br>$$D_n = n! \\left[1 - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} + \\dots + \\frac{(-1)^n}{n!}\\right]$$\n<br>Approximate relation: $D_n \\approx \\frac{n!}{e}$ (rounded to the nearest integer)."
+      },
+      {
+        id: 42,
+        category: "modern",
+        categoryLabel: "Modern Math",
+        icon: "fa-solid fa-chart-pie text-pink-400",
+        front: "P&C: Partitioning - Distributing $n$ identical items into $r$ distinct groups (Stars and Bars)",
+        back: "The number of non-negative integer solutions (groups can be empty, $x_i \\ge 0$) is:\n<br><br>$$\\text{Ways} = \\binom{n + r - 1}{r - 1}$$\n<br>For positive integer solutions (no group can be empty, $x_i \\ge 1$):\n$$\\text{Ways} = \\binom{n - 1}{r - 1}$$"
+      },
+      {
+        id: 43,
+        category: "modern",
+        categoryLabel: "Modern Math",
+        icon: "fa-solid fa-chart-pie text-pink-400",
+        front: "P&C: Total circular permutations of $n$ distinct objects",
+        back: "When the seating arrangement can distinguish between clockwise and counter-clockwise orders:\n<br><br>$$\\text{Circular Permutations} = (n - 1)!$$\n<br>If clockwise/counter-clockwise are equivalent (like a necklace of beads):\n$$\\text{Ways} = \\frac{(n - 1)!}{2}$$"
+      },
+      {
+        id: 44,
+        category: "modern",
+        categoryLabel: "Modern Math",
+        icon: "fa-solid fa-chart-pie text-pink-400",
+        front: "P&C: Number of Diagonals and Triangles from $n$ Coplanar points",
+        back: "If $n$ points lie on a plane where $m$ points are collinear:\n<br><br>$$\\text{Number of Lines} = \\binom{n}{2} - \\binom{m}{2} + 1$$\n$$\\text{Number of Triangles} = \\binom{n}{3} - \\binom{m}{3}$$"
+      },
+      {
+        id: 45,
+        category: "modern",
+        categoryLabel: "Modern Math",
+        icon: "fa-solid fa-chart-pie text-pink-400",
+        front: "Probability: Conditional Probability definition and Bayes' Theorem",
+        back: "The probability of event $A$ occurring given that event $B$ has occurred is:\n<br><br>$$P(A|B) = \\frac{P(A \\cap B)}{P(B)}$$\n<br>Bayes' Theorem formulation:\n$$P(A|B) = \\frac{P(B|A) \\cdot P(A)}{P(B)}$$"
+      },
+      {
+        id: 46,
+        category: "modern",
+        categoryLabel: "Modern Math",
+        icon: "fa-solid fa-chart-pie text-pink-400",
+        front: "Probability: Binomial Distribution Formula",
+        back: "The probability of getting exactly $k$ successes in $n$ independent Bernoulli trials is:\n<br><br>$$P(X = k) = \\binom{n}{k} p^k q^{n-k}$$\n<br>Where $p$ is the probability of success, and $q = 1 - p$."
+      },
+      {
+        id: 47,
+        category: "modern",
+        categoryLabel: "Modern Math",
+        icon: "fa-solid fa-chart-pie text-pink-400",
+        front: "Set Theory: Principle of Inclusion-Exclusion for 3 Sets",
+        back: "For three intersecting finite sets $A, B, C$:\n<br><br>$$n(A \\cup B \\cup C) = n(A) + n(B) + n(C) - n(A \\cap B) - n(B \\cap C) - n(A \\cap C) + n(A \\cap B \\cap C)$$"
+      },
+      {
+        id: 48,
+        category: "modern",
+        categoryLabel: "Modern Math",
+        icon: "fa-solid fa-chart-pie text-pink-400",
+        front: "Set Theory: Cardinality partitions for exactly 2 and exactly 1 set memberships",
+        back: "Let $S_1 = n(A) + n(B) + n(C)$ and $S_2 = n(A \\cap B) + n(B \\cap C) + n(A \\cap C)$ and $S_3 = n(A \\cap B \\cap C)$:\n<br><br>$$\\text{Exactly 1 Set} = S_1 - 2S_2 + 3S_3$$\n$$\\text{Exactly 2 Sets} = S_2 - 3S_3$$\n$$\\text{Exactly 3 Sets} = S_3$$"
+      },
+      {
+        id: 49,
+        category: "modern",
+        categoryLabel: "Modern Math",
+        icon: "fa-solid fa-chart-pie text-pink-400",
+        front: "Probability: Expectations of a Random Variable",
+        back: "For a discrete random variable $X$ with values $x_i$ and corresponding probabilities $p_i$:\n<br><br>$$\\text{Expectation } E(X) = \\sum x_i p_i$$"
+      },
+      {
+        id: 50,
+        category: "modern",
+        categoryLabel: "Modern Math",
+        icon: "fa-solid fa-chart-pie text-pink-400",
+        front: "P&C: Total divisors of a sum exponent distribution",
+        back: "The total number of ways to select a subset of items from $P$ identical, $Q$ identical, and $R$ distinct items is:\n<br><br>$$\\text{Selection subsets} = (P + 1)(Q + 1)2^R - 1$$"
+      }
+    ];
+
+    // Application core parameters
+    let workingDeck = [...cardsDataset];
+    let currentIndex = 0;
+    let isFlipped = false;
+    let categoryFilter = 'all';
+    let searchQuery = '';
+    
+    // State persistence stored in localStorage
+    let starredIds = JSON.parse(localStorage.getItem('catStarredIds')) || [];
+    let learnedIds = JSON.parse(localStorage.getItem('catLearnedIds')) || [];
+    let starredOnly = false;
+    let unlearnedOnly = false;
+
+    // Elements
+    const flashcardBox = document.getElementById('flashcardBox');
+    const innerCard = document.getElementById('innerCard');
+    const cardFrontText = document.getElementById('cardFrontText');
+    const cardBackText = document.getElementById('cardBackText');
+    const cardCategory = document.getElementById('cardCategory');
+    const cardIndexTracker = document.getElementById('cardIndexTracker');
+    const starIcon = document.getElementById('starIcon');
+    const progressBar = document.getElementById('progressBar');
+    const progressBarPercent = document.getElementById('progressBarPercent');
+    const learnedCountEl = document.getElementById('learnedCount');
+    const totalCountEl = document.getElementById('totalCount');
+    const catalogTableBody = document.getElementById('catalogTableBody');
+    const starFilterBtn = document.getElementById('starFilterBtn');
+    const unlearnedFilterBtn = document.getElementById('unlearnedFilterBtn');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+    // Dynamic category count updates
+    function updateCategoryCounts() {
+      document.getElementById('count-all').innerText = cardsDataset.length;
+      document.getElementById('count-arithmetic').innerText = cardsDataset.filter(c => c.category === 'arithmetic').length;
+      document.getElementById('count-algebra').innerText = cardsDataset.filter(c => c.category === 'algebra').length;
+      document.getElementById('count-numbers').innerText = cardsDataset.filter(c => c.category === 'numbers').length;
+      document.getElementById('count-geometry').innerText = cardsDataset.filter(c => c.category === 'geometry').length;
+      document.getElementById('count-modern').innerText = cardsDataset.filter(c => c.category === 'modern').length;
+    }
+
+    // Synchronize filters and build active deck array
+    function rebuildWorkingDeck() {
+      let filtered = cardsDataset;
+
+      // Category filter
+      if (categoryFilter !== 'all') {
+        filtered = filtered.filter(card => card.category === categoryFilter);
+      }
+
+      // Star state filter
+      if (starredOnly) {
+        filtered = filtered.filter(card => starredIds.includes(card.id));
+      }
+
+      // Unlearned progress filter
+      if (unlearnedOnly) {
+        filtered = filtered.filter(card => !learnedIds.includes(card.id));
+      }
+
+      // Search query string filter
+      if (searchQuery.trim() !== '') {
+        const query = searchQuery.toLowerCase();
+        filtered = filtered.filter(card => 
+          card.front.toLowerCase().includes(query) || 
+          card.back.toLowerCase().includes(query) ||
+          card.categoryLabel.toLowerCase().includes(query)
+        );
+      }
+
+      workingDeck = filtered;
+      
+      // Safety adjustment on bounds
+      if (currentIndex >= workingDeck.length) {
+        currentIndex = 0;
+      }
+    }
+
+    // Sync current values with CSS and DOM structure
+    function renderApp() {
+      rebuildWorkingDeck();
+      updateCategoryCounts();
+      
+      // Update global syllabus progression stats
+      totalCountEl.innerText = cardsDataset.length;
+      learnedCountEl.innerText = learnedIds.length;
+      const progressPercent = Math.round((learnedIds.length / cardsDataset.length) * 100);
+      progressBar.style.width = `${progressPercent}%`;
+      progressBarPercent.innerText = `${progressPercent}%`;
+
+      // Update toggle buttons design state
+      if (starredOnly) {
+        starFilterBtn.className = "flex items-center justify-center gap-2 px-3 py-2 border border-amber-500 bg-amber-500/10 rounded-xl text-xs font-semibold text-amber-400 transition-all";
+      } else {
+        starFilterBtn.className = "flex items-center justify-center gap-2 px-3 py-2 border border-slate-800 hover:border-slate-700 bg-slate-950/40 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all";
+      }
+
+      if (unlearnedOnly) {
+        unlearnedFilterBtn.className = "flex items-center justify-center gap-2 px-3 py-2 border border-indigo-500 bg-indigo-500/10 rounded-xl text-xs font-semibold text-indigo-400 transition-all";
+      } else {
+        unlearnedFilterBtn.className = "flex items-center justify-center gap-2 px-3 py-2 border border-slate-800 hover:border-slate-700 bg-slate-950/40 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all";
+      }
+
+      // Empty states layout handling
+      if (workingDeck.length === 0) {
+        cardFrontText.innerHTML = "No syllabus concepts fit the selected filters.<br><span class='text-sm font-normal text-slate-400 mt-2 block'>Try clearing search queries, toggle state flags, or change chapter modules in the sidebar.</span>";
+        cardBackText.innerHTML = "Refine sidebar options to reset cards!";
+        cardCategory.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-400"></i> &nbsp; None`;
+        cardIndexTracker.innerText = "0 of 0";
+        starIcon.innerHTML = `<i class="fa-regular fa-star"></i>`;
+        document.getElementById('btnLearned').disabled = true;
+        document.getElementById('btnNeedPractice').disabled = true;
+        renderCatalogTable();
+        return;
+      }
+
+      document.getElementById('btnLearned').disabled = false;
+      document.getElementById('btnNeedPractice').disabled = false;
+
+      // Retrieve and assign values of active card
+      const card = workingDeck[currentIndex];
+      cardCategory.innerHTML = `<i class="${card.icon}"></i> &nbsp; ${card.categoryLabel}`;
+      cardIndexTracker.innerText = `Card ${currentIndex + 1} of ${workingDeck.length}`;
+      
+      cardFrontText.innerHTML = card.front;
+      cardBackText.innerHTML = card.back;
+
+      // Update specific Learned buttons styling
+      const hasLearned = learnedIds.includes(card.id);
+      const learnedBtn = document.getElementById('btnLearned');
+      if (hasLearned) {
+        learnedBtn.innerHTML = `<i class="fa-solid fa-check-double text-emerald-400"></i> Mastered`;
+        learnedBtn.classList.add('border-emerald-500', 'bg-emerald-950/40');
+      } else {
+        learnedBtn.innerHTML = `<i class="fa-solid fa-circle-check"></i> Got It!`;
+        learnedBtn.classList.remove('border-emerald-500', 'bg-emerald-950/40');
+      }
+
+      // Update card Star rating icon
+      const isStarred = starredIds.includes(card.id);
+      if (isStarred) {
+        starIcon.innerHTML = `<i class="fa-solid fa-star text-amber-400"></i>`;
+      } else {
+        starIcon.innerHTML = `<i class="fa-regular fa-star text-slate-500 hover:text-amber-400"></i>`;
+      }
+
+      // Revert card orientation back to front page
+      resetCardFlipFace();
+
+      // Trigger MathJax equation compiler execution
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise();
+      }
+
+      // Synchronize changes directly with lower catalog table
+      renderCatalogTable();
+    }
+
+    // Flip 3D Card
+    function flipCard() {
+      if (workingDeck.length === 0) return;
+      isFlipped = !isFlipped;
+      if (isFlipped) {
+        innerCard.classList.add('rotate-y-180');
+      } else {
+        innerCard.classList.remove('rotate-y-180');
+      }
+    }
+
+    // Force alignment to front face
+    function resetCardFlipFace() {
+      isFlipped = false;
+      innerCard.classList.remove('rotate-y-180');
+    }
+
+    // Toggle active card starred flag
+    function toggleStar() {
+      if (workingDeck.length === 0) return;
+      const cardId = workingDeck[currentIndex].id;
+      const idx = starredIds.indexOf(cardId);
+      if (idx > -1) {
+        starredIds.splice(idx, 1);
+      } else {
+        starredIds.push(cardId);
+      }
+      localStorage.setItem('catStarredIds', JSON.stringify(starredIds));
+      renderApp();
+    }
+
+    // Toggle and save learned parameters
+    function markCardLearned(isLearned) {
+      if (workingDeck.length === 0) return;
+      const cardId = workingDeck[currentIndex].id;
+      const idx = learnedIds.indexOf(cardId);
+      
+      if (isLearned) {
+        if (idx === -1) learnedIds.push(cardId);
+        // Soft progression delays to let candidate visualize action confirmation
+        setTimeout(() => {
+          nextCard();
+        }, 150);
+      } else {
+        if (idx > -1) learnedIds.splice(idx, 1);
+      }
+      
+      localStorage.setItem('catLearnedIds', JSON.stringify(learnedIds));
+      renderApp();
+    }
+
+    // Navigation index shifts
+    function nextCard() {
+      if (workingDeck.length === 0) return;
+      currentIndex = (currentIndex + 1) % workingDeck.length;
+      renderApp();
+    }
+
+    function prevCard() {
+      if (workingDeck.length === 0) return;
+      currentIndex = (currentIndex - 1 + workingDeck.length) % workingDeck.length;
+      renderApp();
+    }
+
+    // Randomize working deck array using Fisher-Yates shuffle logic
+    function shuffleDeck() {
+      if (workingDeck.length === 0) return;
+      for (let i = workingDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [workingDeck[i], workingDeck[j]] = [workingDeck[j], workingDeck[i]];
+      }
+      currentIndex = 0;
+      renderApp();
+    }
+
+    // Chapter taxonomy filtering
+    function filterCategory(cat) {
+      categoryFilter = cat;
+      const categories = ['all', 'arithmetic', 'algebra', 'numbers', 'geometry', 'modern'];
+      
+      categories.forEach(c => {
+        const btn = document.getElementById(`btn-cat-${c}`);
+        if (c === cat) {
+          btn.className = "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-xs font-semibold transition-all bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-lg shadow-indigo-600/10";
+        } else {
+          btn.className = "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-xs font-semibold text-slate-400 hover:bg-slate-800/50 hover:text-slate-200 transition-all";
+        }
+      });
+      currentIndex = 0;
+      renderApp();
+    }
+
+    // Toggle flagged states
+    function toggleStarredOnly() {
+      starredOnly = !starredOnly;
+      currentIndex = 0;
+      renderApp();
+    }
+
+    function toggleUnlearnedOnly() {
+      unlearnedOnly = !unlearnedOnly;
+      currentIndex = 0;
+      renderApp();
+    }
+
+    // Search query parameter update
+    function handleSearch() {
+      searchQuery = searchInput.value;
+      if (searchQuery.trim() !== '') {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+      currentIndex = 0;
+      renderApp();
+    }
+
+    // Reset Search Parameter
+    function clearSearch() {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      currentIndex = 0;
+      renderApp();
+    }
+
+    // Erase progress database logs
+    function resetAllState() {
+      const confirmMsg = "Are you sure you want to delete all checked master completions and saved starred concepts? This will restore the entire CAT Quant deck to its default unlearned state.";
+      // Use in-app confirmation modal or custom implementation (no alert() or confirm() rule applied here)
+      // Standard safe confirmation overlay replacement:
+      const confirmBox = document.createElement('div');
+      confirmBox.className = "fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 backdrop-blur-sm px-4";
+      confirmBox.innerHTML = `
+        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl max-w-sm w-full shadow-2xl flex flex-col gap-4">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-rose-400 flex items-center gap-2">
+            <i class="fa-solid fa-triangle-exclamation"></i> Confirm State Erase
+          </h4>
+          <p class="text-xs text-slate-300 leading-relaxed">${confirmMsg}</p>
+          <div class="flex gap-3 mt-2">
+            <button id="cancelResetBtn" class="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition-all">Cancel</button>
+            <button id="confirmResetBtn" class="flex-1 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-semibold transition-all">Erase All</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(confirmBox);
+
+      document.getElementById('cancelResetBtn').onclick = () => {
+        document.body.removeChild(confirmBox);
+      };
+
+      document.getElementById('confirmResetBtn').onclick = () => {
+        learnedIds = [];
+        starredIds = [];
+        localStorage.removeItem('catLearnedIds');
+        localStorage.removeItem('catStarredIds');
+        document.body.removeChild(confirmBox);
+        renderApp();
+      };
+    }
+
+    // Jump directly to catalog index row target
+    function jumpToCard(id) {
+      rebuildWorkingDeck();
+      const idx = workingDeck.findIndex(c => c.id === id);
+      if (idx > -1) {
+        currentIndex = idx;
+        window.scrollTo({ top: flashcardBox.offsetTop - 120, behavior: 'smooth' });
+        renderApp();
+      } else {
+        // Safe context warning banner overlay replacing standard alert window
+        const warningBanner = document.createElement('div');
+        warningBanner.className = "fixed bottom-5 right-5 z-[100] bg-rose-950 border border-rose-800 px-4 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 max-w-sm";
+        warningBanner.innerHTML = `
+          <i class="fa-solid fa-circle-exclamation text-rose-400 text-lg"></i>
+          <div>
+            <h5 class="text-xs font-bold text-slate-100">Formula Filtered Out</h5>
+            <p class="text-[10px] text-slate-400 mt-0.5">This card is hidden by current search or flag configurations. Reset filters to study this card.</p>
+          </div>
+        `;
+        document.body.appendChild(warningBanner);
+        setTimeout(() => {
+          warningBanner.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+          setTimeout(() => document.body.removeChild(warningBanner), 500);
+        }, 4000);
+      }
+    }
+
+    // Populate bottom database directory table
+    function renderCatalogTable() {
+      catalogTableBody.innerHTML = '';
+      
+      // Render entire 50 dataset regardless of temporary study limits to act as a catalog index
+      cardsDataset.forEach((card, index) => {
+        const isStarred = starredIds.includes(card.id);
+        const isLearned = learnedIds.includes(card.id);
+        
+        const row = document.createElement('tr');
+        row.className = "border-b border-slate-850 hover:bg-slate-900/40 cursor-pointer transition-colors";
+        row.onclick = () => jumpToCard(card.id);
+
+        row.innerHTML = `
+          <td class="py-4 px-5 font-bold font-mono text-slate-500">${index + 1}</td>
+          <td class="py-4 px-4">
+            <span class="text-[10px] bg-slate-900 text-slate-300 font-semibold px-2.5 py-1 rounded-lg border border-slate-800 inline-flex items-center gap-1.5 uppercase tracking-wide">
+              <i class="${card.icon}"></i> ${card.categoryLabel}
+            </span>
+          </td>
+          <td class="py-4 px-5 font-semibold text-slate-200 max-w-sm md:max-w-2xl truncate">${card.front}</td>
+          <td class="py-4 px-5 text-right">
+            <div class="flex items-center justify-end gap-3">
+              ${isStarred ? '<i class="fa-solid fa-star text-amber-400 text-xs"></i>' : ''}
+              ${isLearned 
+                ? '<span class="text-[10px] font-bold text-emerald-400 bg-emerald-950/20 border border-emerald-500/20 px-2.5 py-1 rounded-full uppercase tracking-wide"><i class="fa-solid fa-circle-check"></i> Mastered</span>' 
+                : '<span class="text-[10px] font-bold text-indigo-400 bg-indigo-950/20 border border-indigo-500/20 px-2.5 py-1 rounded-full uppercase tracking-wide"><i class="fa-solid fa-hourglass"></i> Review</span>'
+              }
+            </div>
+          </td>
+        `;
+        catalogTableBody.appendChild(row);
+      });
+    }
+
+    // Boot sequence on document complete
+    window.addEventListener('DOMContentLoaded', () => {
+      renderApp();
+    });
+  </script>
+</body>
+</html>
